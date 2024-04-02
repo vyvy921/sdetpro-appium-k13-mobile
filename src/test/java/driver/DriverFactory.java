@@ -6,6 +6,7 @@ import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
+import java.time.Duration;
 
 public class DriverFactory {
     //input: Platform
@@ -13,8 +14,7 @@ public class DriverFactory {
 
     public static AppiumDriver getDriver(Platform platform) {
         AppiumDriver appiumDriver = null;
-
-        //check !null
+        //check driver !null before return
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(MobileCapabilityType.APP_PACKAGE, "com.wdiodemoapp");
@@ -44,6 +44,7 @@ public class DriverFactory {
             throw new RuntimeException("Can't construct the appium server URL");
         }
 
+        appiumDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10L));
         return appiumDriver;
     }
 
