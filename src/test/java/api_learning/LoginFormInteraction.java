@@ -6,6 +6,10 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginFormInteraction {
     public static void main(String[] args) {
@@ -20,18 +24,30 @@ public class LoginFormInteraction {
             //Input username
 //            By inputUsLoc = By.xpath("//android.widget.EditText[@content-desc=\"input-email\"]");
             WebElement inputUsEle = appiumDriver.findElement(AppiumBy.accessibilityId("input-email"));
-            inputUsEle.sendKeys("user@gmail.com");
+            inputUsEle.sendKeys("vyvy@gmail.com");
 
             //Input password
 //            By inputPwLoc = By.xpath("//android.widget.EditText[@content-desc=\"input-password\"]");
             WebElement inputPwEle = appiumDriver.findElement(AppiumBy.accessibilityId("input-password"));
-            inputPwEle.sendKeys("password");
+            inputPwEle.sendKeys("12345678");
 
             //Click on login btn
 //            By loginBtnLoc = By.xpath("//android.view.ViewGroup[@content-desc=\"button-LOGIN\"]");
             By loginBtnLoc = AppiumBy.accessibilityId("button-LOGIN");
             WebElement loginBtnEle = appiumDriver.findElement(loginBtnLoc);
             loginBtnEle.click();
+
+            //Wait an Element
+            By dialogMsgLoc = AppiumBy.id("android:id/message");
+            By dialogBtnLoc = AppiumBy.id("android:id/button1");
+
+            //using explicit wait
+            WebDriverWait wait = new WebDriverWait(appiumDriver, Duration.ofSeconds(15));
+            WebElement dialogMsgElem = wait.until(ExpectedConditions.visibilityOfElementLocated(dialogMsgLoc));
+            System.out.printf("Your dialog msg: %s", dialogMsgElem.getText());
+            appiumDriver.findElement(dialogBtnLoc).click();
+
+
 
 
         } catch (Exception e) {

@@ -21,7 +21,7 @@ public class LaunchAppTestDemo {
         //init session
         AppiumDriver appiumDriver = null;
         try {
-            URL appiumServer = new URL("http://localhost:4723");
+            URL appiumServer = new URL("http://localhost:4725");
             appiumDriver = new AndroidDriver(appiumServer, desiredCapabilities);
         } catch (Exception e) {
             e.printStackTrace();

@@ -25,7 +25,7 @@ public class DriverFactory {
 
         URL appiumServer = null;
         try {
-            appiumServer = new URL("http://localhost:4723");
+            appiumServer = new URL("http://localhost:4725");
         } catch (Exception e) {
             e.printStackTrace();
         }
