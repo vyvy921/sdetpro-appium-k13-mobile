@@ -59,7 +59,7 @@ public class SwipeVertically {
             int endX = startX;
             int endY = 10 * screenHeight / 100;
 
-            // specify Pointer Input
+            // specify Pointer Input as [TOUCH] with name [finger]
             PointerInput pointerInput = new PointerInput(PointerInput.Kind.TOUCH, "finger");
 
             // specify sequence
